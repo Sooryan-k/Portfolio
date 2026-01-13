@@ -37,7 +37,7 @@ export default function Body() {
       </div>
 
       {/* Content container */}
-      <div className="mt-10 rounded-2xl border border-white/10 bg-black/20 p-6 backdrop-blur-sm">
+      <div className="mt-10 rounded-2xl border border-white/10 bg-black/10 p-6">
         {activeTab === "About" && <About />}
         {activeTab === "Experience" && <Experience />}
         {activeTab === "Certifications" && <Certifications />}
