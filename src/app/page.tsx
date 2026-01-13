@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Head from "@/components/Head";
 import Body from "@/components/body/Body";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="dot-bg -z-10" />
       <Head />
       <Body/>
+      <Footer/>
     </main>
   );
 }
