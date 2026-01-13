@@ -26,7 +26,7 @@ const projects = [
 
 export default function About() {
   return (
-    <section className="space-y-20 max-w-5xl mx-auto px-4">
+    <section className="space-y-10 max-w-5xl mx-auto px-4">
       {/* about me  */}
       <div className="space-y-4 font-mono text-zinc-300">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white underline underline-offset-8">
@@ -82,7 +82,7 @@ export default function About() {
                 {project.description}
               </p>
 
-              <p className="text-xs text-zinc-500 leading-relaxed pr-10">
+              <p className="text-xs text-zinc-500 leading-relaxed pr-3">
                 <span className="text-zinc-300">Technologies:</span>{" "}
                 {project.technologies}
               </p>

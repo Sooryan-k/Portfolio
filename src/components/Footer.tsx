@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 export default function Footer() {
   return (
-    <footer className="mt-28 space-y-14 px-4 pb-12 text-center font-mono text-zinc-300">
+    <footer className="mt-10 space-y-14 px-4 pb-12 text-center font-mono text-zinc-300">
       {/* tech stack  */}
       <div className="space-y-8">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white">
@@ -85,10 +85,10 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="
       inline-flex items-center gap-3
-      rounded-2xl
+      rounded-xl
       border border-white/20
       bg-white/10
-      px-6 py-3
+      px-5 py-2
       font-mono text-lg font-semibold tracking-wider text-white
       backdrop-blur-md
       hover:bg-white/15
