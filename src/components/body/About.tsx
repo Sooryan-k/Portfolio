@@ -7,57 +7,51 @@ const projects = [
     image: "/images/projects/london-news-logo.webp",
     type: "Professional Project",
     description:
-      "A full-stack news publishing platform built using Next.js, TypeScript, and Tailwind CSS. The platform supports category-based article browsing, detailed stories, authentication, subscriptions, mood surveys, and a live weather widget. It also includes an admin dashboard with full CRUD operations, role-based access control, image storage, newsletter broadcasting, and real-time error tracking.",
+      "London News is a full stack news publishing platform built with Next.js and PostgreSQL, designed for both readers and administrators. It features category based article browsing, detailed stories, authentication, subscriptions, surveys, and a live weather widget powered by OpenWeatherMap. An admin dashboard supports full CRUD operations, role based access control, and image storage using Supabase and Prisma ORM. The platform is secured with NextAuth.js (JWT) and deployed on Vercel with real time monitoring via Sentry and newsletter delivery through Resend.",
     technologies:
-      "Next.js, TypeScript, Tailwind CSS, PostgreSQL (Supabase), Prisma ORM, NextAuth.js, Sentry, OpenWeatherMap API, Resend, Vercel",
+      "Next.js, Tailwind CSS, Prisma ORM, PostgreSQL with Supabase, Supabase Storage, NextAuth.js, Sentry, OpenWeatherMap API, Resend,Vercel",
   },
-  {
-    title: "Washington Insider",
-    image: "/images/projects/washingtoninsider-logo.webp",
-    type: "Professional Project",
-    description:
-      "A modern news publishing web application allowing users to browse articles by category and read detailed stories through a fast, responsive interface. The project focuses on performance, scalability, clean data modeling, and maintainable architecture.",
-    technologies:
-      "Next.js, TypeScript, Tailwind CSS, PostgreSQL (Supabase), Prisma ORM, Vercel",
-  },
+  //   {
+  //     title: "Washington Insider",
+  //     image: "/images/projects/washingtoninsider-logo.webp",
+  //     type: "Professional Project",
+  //     description:
+  //       "A modern news publishing web application allowing users to browse articles by category and read detailed stories through a fast, responsive interface. The project focuses on performance, scalability, clean data modeling, and maintainable architecture.",
+  //     technologies:
+  // " Next.js, TypeScript, Tailwind CSS, Prisma ORM, PostgreSQL with Supabase, Vercel"  },
   {
     title: "PETme Web Application",
     image: "/images/projects/petmelogo.png",
     type: "Individual Project",
     description:
-      "A peer-to-peer marketplace enabling users to list pets and purchase pet food and accessories. The application features secure authentication, online payments, RESTful APIs, and a responsive frontend designed for smooth user experience.",
+      "A peer to peer marketplace enabling users to list pets and purchase pet food and accessories. The application features secure authentication, online payments, RESTful APIs, and a responsive frontend designed for smooth user experience.",
     technologies:
-      "React.js, Node.js, Express.js, MongoDB, Firebase Authentication, Razorpay, Bootstrap, Material-UI",
+      "React.js, Node.js, Express.js, MongoDB, Firebase Authentication, Bootstrap, Razorpay, Material-UI, CSS",
   },
 ];
 
 export default function About() {
   return (
-    <section className="space-y-20">
-      {/* -------- About Me -------- */}
+    <section className="space-y-20 max-w-5xl mx-auto px-4">
+      {/* about me  */}
       <div className="space-y-4 font-mono text-zinc-300">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white underline underline-offset-8">
           About Me
         </h2>
 
-        <p className="leading-relaxed">
-          I am a Full Stack Developer with professional experience building and
-          optimizing modern web applications using Next.js and PostgreSQL. I
-          specialize in delivering scalable, high-performance solutions across
-          frontend and backend with a strong focus on clean architecture,
-          responsive UI/UX, and performance optimization.
-        </p>
-
-        <p className="leading-relaxed">
-          I have hands-on experience designing RESTful APIs, implementing secure
-          authentication systems, integrating third-party services, and
-          deploying applications to the cloud. I am comfortable executing
-          end-to-end projects independently as well as collaborating within
-          cross-functional teams.
+        <p className="leading-relaxed text-sm md:text-md">
+          I’m a Full Stack Developer with 6+ months of professional experience
+          building and optimizing scalable web applications using Next.js and
+          PostgreSQL. I work across the stack with React, Node.js, TypeScript,
+          Prisma, and Supabase, designing secure APIs and authentication
+          systems. I’ve integrated third-party services like Razorpay,
+          OpenWeatherMap, and Resend, with a strong focus on performance, SEO,
+          and responsive UI/UX. I enjoy executing projects end-to-end and
+          turning business requirements into clean, maintainable solutions.
         </p>
       </div>
 
-      {/* -------- Projects -------- */}
+      {/* projects */}
       <div className="space-y-14">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white underline underline-offset-8 font-mono">
           Projects
@@ -66,44 +60,45 @@ export default function About() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start border-b border-white/10 pb-10"
+            className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6 items-start border-b border-white/10 pb-10"
           >
-            {/* Left: Project Image */}
-            <div className="relative h-80 w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+            {/* left: project image */}
+            <div className="relative h-auto w-full overflow-hidden rounded-xl border border-white/10 bg-black">
               <Image
                 src={project.image}
                 alt={project.title}
-                fill
-                className="object-center w-full grayscale transition duration-300 hover:grayscale-0"
+                width={500}
+                height={50}
+                className="object-center grayscale transition duration-300 hover:grayscale-0"
               />
 
-              {/* Project Type Badge */}
-              <span className="absolute top-3 left-3 rounded-md bg-red-400 px-1 py-1 text-xs font-mono text-black">
+              {/* project type badge */}
+              <span className="absolute top-2 left-2 rounded-md bg-red-400 px-2 py-0.5 text-[10px] font-mono text-black">
                 {project.type}
               </span>
             </div>
 
-            {/* Right: Description */}
+            {/* right: description */}
             <div className="relative space-y-3 font-mono">
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-lg sm:text-xl font-semibold text-white">
                 {project.title}
               </h3>
 
-              <p className="text-sm text-zinc-400 leading-relaxed">
+              <p className="text-sm text-zinc-400 leading-relaxed text-left tracking-tight md:text-justify md:tracking-tighter">
                 {project.description}
               </p>
 
-              <p className="text-xs text-zinc-500 leading-relaxed">
+              <p className="text-xs text-zinc-500 leading-relaxed pr-10">
                 <span className="text-zinc-300">Technologies:</span>{" "}
                 {project.technologies}
               </p>
 
-              {/* Arrow Button */}
+              {/* arrow button */}
               <button
                 aria-label="Project details"
-                className="absolute bottom-0 right-0 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white"
+                className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white"
               >
-                <ArrowUpRight size={18} />
+                <ArrowUpRight size={16} />
               </button>
             </div>
           </div>
