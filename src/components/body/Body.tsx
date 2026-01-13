@@ -12,15 +12,15 @@ export default function Body() {
   const [activeTab, setActiveTab] = useState<Tab>("About");
 
   return (
-    <section className="w-full max-w-5xl mx-auto mt-20 px-4">
-      {/* tabs */}
+    <section className="w-full max-w-5xl mx-auto mt-24 px-4">
+      {/* tabs container */}
       <div className="flex justify-center">
         <div
           className="
-            flex gap-2 sm:gap-4
+            relative flex w-full max-w-md
             rounded-2xl border border-white/10
-            bg-black/40 backdrop-blur-md
-            p-2
+            bg-black/50 backdrop-blur-md
+            p-1
           "
         >
           {tabs.map((tab) => {
@@ -30,19 +30,36 @@ export default function Body() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={` cursor-pointer
-                  relative px-4 py-2
-                  rounded-xl
+                className=" cursor-pointer
+                  relative z-10 flex-1
+                  rounded-xl py-2
                   font-mono text-sm sm:text-base
-                  transition-all
-                  ${
-                    isActive
-                      ? "bg-white/10 text-white shadow-[0_0_0_1px_rgba(255,255,255,0.2)]"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
-                  }
-                `}
+                  transition-colors
+                "
               >
-                {tab}
+                {/* active background */}
+                {isActive && (
+                  <span
+                    className="
+                      absolute inset-0
+                      rounded-xl
+                      bg-white/10
+                      shadow-[0_0_0_1px_rgba(255,255,255,0.25)]
+                    "
+                  />
+                )}
+
+                {/* label */}
+                <span
+                  className={`
+                    relative
+                    ${
+                      isActive ? "text-white" : "text-zinc-400 hover:text-white"
+                    }
+                  `}
+                >
+                  {tab}
+                </span>
               </button>
             );
           })}
@@ -50,7 +67,7 @@ export default function Body() {
       </div>
 
       {/* content */}
-      <div className="mt-10 rounded-2xl border border-white/10 bg-black/10 p-6 sm:p-8">
+      <div className="mt-12 rounded-2xl border border-white/10 bg-black/10  p-0 sm:p-8">
         {activeTab === "About" && <About />}
         {activeTab === "Experience" && <Experience />}
         {activeTab === "Certifications" && <Certifications />}
