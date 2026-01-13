@@ -7,7 +7,7 @@ export default function Head() {
       {/* Avatar */}
       <div className="mb-6 h-[160px] w-[160px] sm:h-[200px] sm:w-[200px] overflow-hidden rounded-full">
         <Image
-          src="/images/Profile-photo.jpeg"
+          src="/images/profile-photo.jpeg"
           alt="Profile"
           width={200}
           height={200}
