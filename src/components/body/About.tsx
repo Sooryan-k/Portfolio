@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -11,22 +12,15 @@ const projects = [
     technologies:
       "Next.js, Tailwind CSS, Prisma ORM, PostgreSQL with Supabase, Supabase Storage, NextAuth.js, Sentry, OpenWeatherMap API, Resend,Vercel",
   },
-  //   {
-  //     title: "Washington Insider",
-  //     image: "/images/projects/washingtoninsider-logo.webp",
-  //     type: "Professional Project",
-  //     description:
-  //       "A modern news publishing web application allowing users to browse articles by category and read detailed stories through a fast, responsive interface. The project focuses on performance, scalability, clean data modeling, and maintainable architecture.",
-  //     technologies:
-  // " Next.js, TypeScript, Tailwind CSS, Prisma ORM, PostgreSQL with Supabase, Vercel"  },
   {
     title: "PETme Web Application",
-    image: "/images/projects/petmelogo.png",
+    image: "/images/projects/petmelogo.webp",
     type: "Individual Project",
     description:
       "A peer to peer marketplace enabling users to list pets and purchase pet food and accessories. The application features secure authentication, online payments, RESTful APIs, and a responsive frontend designed for smooth user experience.",
     technologies:
       "React.js, Node.js, Express.js, MongoDB, Firebase Authentication, Bootstrap, Razorpay, Material-UI, CSS",
+    link: "https://petmebysooryan.vercel.app/",
   },
 ];
 
@@ -69,7 +63,7 @@ export default function About() {
                 alt={project.title}
                 width={500}
                 height={50}
-                className="object-center grayscale transition duration-300 hover:grayscale-0"
+                className="object-center"
               />
 
               {/* project type badge */}
@@ -94,12 +88,17 @@ export default function About() {
               </p>
 
               {/* arrow button */}
-              <button
-                aria-label="Project details"
-                className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white"
-              >
-                <ArrowUpRight size={16} />
-              </button>
+              {project.link && (
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Project link"
+                  className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-white"
+                >
+                  <ArrowUpRight size={16} />
+                </Link>
+              )}
             </div>
           </div>
         ))}

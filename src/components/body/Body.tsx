@@ -12,7 +12,7 @@ export default function Body() {
   const [activeTab, setActiveTab] = useState<Tab>("About");
 
   return (
-    <section className="w-full max-w-5xl mx-auto mt-24 px-4">
+    <section className="w-full max-w-5xl mx-auto mt-5 md:mt-10 px-2 md:px-4">
       {/* tabs container */}
       <div className="flex justify-center">
         <div

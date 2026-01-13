@@ -3,11 +3,11 @@ import { Github, Linkedin, Mail, Moon } from "lucide-react";
 
 export default function Head() {
   return (
-    <section className="flex flex-col items-center text-center pt-20 sm:pt-24">
-      {/* Avatar */}
+    <section className="flex flex-col items-center text-center pt-10 sm:pt-24">
+      {/* avatar */}
       <div className="mb-6 h-40 w-40 sm:h-52 sm:w-52 overflow-hidden rounded-full">
         <Image
-          src="/images/Profile-Photo.jpeg"
+          src="/images/Profile-Photo.webp"
           alt="Profile"
           width={208}
           height={208}
@@ -16,17 +16,17 @@ export default function Head() {
         />
       </div>
 
-      {/* Name */}
+      {/* name */}
       <h1 className="font-mono text-2xl sm:text-3xl font-semibold text-white">
         Sooryan K
       </h1>
 
-      {/* Role */}
+      {/* role */}
       <p className="mt-2 font-mono text-sm sm:text-lg text-zinc-400">
         Engineer <span className="mx-1">|</span> Full Stack Developer
       </p>
 
-      {/* Social links */}
+      {/* social links */}
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <IconLink
           href="https://github.com/Sooryan-k"
@@ -43,18 +43,17 @@ export default function Head() {
           label="LinkedIn"
           icon={<Linkedin size={16} />}
         />
-        {/* <IconLink href="#" label="Theme" icon={<Moon size={16} />} /> */}
       </div>
 
-      {/* Location */}
-      <p className="mt-8 font-mono text-lg sm:text-2xl font-light tracking-tight text-zinc-300">
+      {/* location */}
+      <p className=" mt-4 md:mt-8 font-mono text-lg sm:text-2xl font-light tracking-tight text-zinc-300">
         Kochi, India
       </p>
     </section>
   );
 }
 
-/* ---------- Icon Link Button ---------- */
+/* icon Link Button */
 
 function IconLink({
   href,

@@ -30,7 +30,7 @@ export default function StickyHeader() {
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full overflow-hidden">
               <Image
-                src="/images/Profile-Photo.jpeg"
+                src="/images/Profile-Photo.webp"
                 alt="profile"
                 width={40}
                 height={40}

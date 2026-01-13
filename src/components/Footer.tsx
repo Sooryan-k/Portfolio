@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="mt-28 space-y-14 px-4 pb-12 text-center font-mono text-zinc-300">
@@ -77,18 +78,25 @@ export default function Footer() {
       </div>
 
       {/* resume */}
-      <div>
-        <a
+      <div className="flex justify-center">
+        <Link
           href="/Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold tracking-wider underline underline-offset-4 hover:text-white transition"
+          className="
+      inline-flex items-center gap-3
+      rounded-2xl
+      border border-white/20
+      bg-white/10
+      px-6 py-3
+      font-mono text-lg font-semibold tracking-wider text-white
+      backdrop-blur-md
+      hover:bg-white/15
+    "
         >
           Resume
-          <span aria-hidden>
-            <ArrowUpRight size={20} />
-          </span>
-        </a>
+          <ArrowUpRight size={20} />
+        </Link>
       </div>
 
       {/* footer text */}
