@@ -4,7 +4,6 @@ import { useState } from "react";
 import About from "./About";
 import Experience from "./Experience";
 import Certifications from "./Certifications";
-// import Blogs from "./Blogs";
 
 const tabs = ["About", "Experience", "Certifications"] as const;
 type Tab = (typeof tabs)[number];
@@ -14,34 +13,47 @@ export default function Body() {
 
   return (
     <section className="w-full max-w-5xl mx-auto mt-20 px-4">
-      {/* Tabs */}
-      <div className="flex justify-between gap-4 text-sm sm:text-base font-mono text-zinc-300">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`relative pb-2 transition cursor-pointer ${
-              activeTab === tab
-                ? "text-white"
-                : "hover:text-white text-zinc-400"
-            }`}
-          >
-            {tab}
+      {/* tabs */}
+      <div className="flex justify-center">
+        <div
+          className="
+            flex gap-2 sm:gap-4
+            rounded-2xl border border-white/10
+            bg-black/40 backdrop-blur-md
+            p-2
+          "
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab;
 
-            {/* Active underline */}
-            {activeTab === tab && (
-              <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-white" />
-            )}
-          </button>
-        ))}
+            return (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={` cursor-pointer
+                  relative px-4 py-2
+                  rounded-xl
+                  font-mono text-sm sm:text-base
+                  transition-all
+                  ${
+                    isActive
+                      ? "bg-white/10 text-white shadow-[0_0_0_1px_rgba(255,255,255,0.2)]"
+                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                  }
+                `}
+              >
+                {tab}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Content container */}
-      <div className="mt-10 rounded-2xl border border-white/10 bg-black/10 p-6">
+      {/* content */}
+      <div className="mt-10 rounded-2xl border border-white/10 bg-black/10 p-6 sm:p-8">
         {activeTab === "About" && <About />}
         {activeTab === "Experience" && <Experience />}
         {activeTab === "Certifications" && <Certifications />}
-        {/* {activeTab === "Blogs" && <Blogs />} */}
       </div>
     </section>
   );
