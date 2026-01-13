@@ -46,7 +46,7 @@ export default function About() {
       </div>
 
       {/* projects */}
-      <div className="space-y-14">
+      <div className=" space-y-5 md:space-y-14">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white underline underline-offset-8 font-mono">
           Projects
         </h2>

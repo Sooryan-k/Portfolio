@@ -1,6 +1,6 @@
 export default function Experience() {
   return (
-    <section className="space-y-14 font-mono">
+    <section className="space-y-14 font-mono p-3">
       {/* work experience */}
       <div className="space-y-6">
         <h2 className="text-xl sm:text-2xl font-semibold text-white underline underline-offset-8">

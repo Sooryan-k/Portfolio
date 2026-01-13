@@ -1,6 +1,6 @@
 export default function Certifications() {
   return (
-    <section className="space-y-6 font-mono">
+    <section className="space-y-6 font-mono p-3">
       <h2 className="text-xl sm:text-2xl font-semibold text-white underline underline-offset-8">
         Certifications
       </h2>
