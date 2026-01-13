@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import StickyHeader from "@/components/StickyHeader";
 
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="relative bg-black text-white">
         <div className="dot-bg -z-10" />
+        <StickyHeader />
         {children}
       </body>
     </html>

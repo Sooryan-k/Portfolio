@@ -5,19 +5,19 @@ export default function Head() {
   return (
     <section className="flex flex-col items-center text-center pt-20 sm:pt-24">
       {/* Avatar */}
-      <div className="mb-6 h-[160px] w-[160px] sm:h-[200px] sm:w-[200px] overflow-hidden rounded-full">
+      <div className="mb-6 h-40 w-40 sm:h-52 sm:w-52 overflow-hidden rounded-full">
         <Image
           src="/images/Profile-Photo.jpeg"
           alt="Profile"
-          width={200}
-          height={200}
+          width={208}
+          height={208}
           priority
           className="h-full w-full object-cover grayscale"
         />
       </div>
 
       {/* Name */}
-      <h1 className="font-mono text-2xl sm:text-3xl font-semibold">
+      <h1 className="font-mono text-2xl sm:text-3xl font-semibold text-white">
         Sooryan K
       </h1>
 
@@ -26,12 +26,24 @@ export default function Head() {
         Engineer <span className="mx-1">|</span> Full Stack Developer
       </p>
 
-      {/* Social icons */}
+      {/* Social links */}
       <div className="mt-6 flex flex-wrap justify-center gap-3">
-        <IconButton icon={<Github size={16} />} label="GitHub" />
-        <IconButton icon={<Mail size={16} />} label="Mail" />
-        <IconButton icon={<Linkedin size={16} />} label="LinkedIn" />
-        <IconButton icon={<Moon size={16} />} label="Theme" />
+        <IconLink
+          href="https://github.com/Sooryan-k"
+          label="GitHub"
+          icon={<Github size={16} />}
+        />
+        <IconLink
+          href="mailto:sooryanoff@gmail.com"
+          label="Mail"
+          icon={<Mail size={16} />}
+        />
+        <IconLink
+          href="https://www.linkedin.com/in/sooryan-k/"
+          label="LinkedIn"
+          icon={<Linkedin size={16} />}
+        />
+        {/* <IconLink href="#" label="Theme" icon={<Moon size={16} />} /> */}
       </div>
 
       {/* Location */}
@@ -42,13 +54,24 @@ export default function Head() {
   );
 }
 
-/* ---------- Icon Button ---------- */
+/* ---------- Icon Link Button ---------- */
 
-function IconButton({ icon, label }: { icon: React.ReactNode; label: string }) {
+function IconLink({
+  href,
+  icon,
+  label,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
   return (
-    <button
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className=" cursor-pointer
+      className="
         flex items-center gap-2
         rounded-xl border border-white/10
         bg-black/60 px-4 py-2
@@ -59,6 +82,6 @@ function IconButton({ icon, label }: { icon: React.ReactNode; label: string }) {
       "
     >
       {icon}
-    </button>
+    </a>
   );
 }
