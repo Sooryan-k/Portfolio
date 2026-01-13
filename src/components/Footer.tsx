@@ -79,7 +79,7 @@ export default function Footer() {
       {/* resume */}
       <div>
         <a
-          href="/resume.pdf"
+          href="/Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-lg font-semibold tracking-wider underline underline-offset-4 hover:text-white transition"
