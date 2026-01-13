@@ -12,7 +12,7 @@ export default function Head() {
           width={208}
           height={208}
           priority
-          className="h-full w-full object-cover grayscale"
+          className="h-full w-full object-cover"
         />
       </div>
 

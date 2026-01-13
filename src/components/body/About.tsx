@@ -28,7 +28,7 @@ export default function About() {
   return (
     <section className="space-y-10 max-w-5xl mx-auto px-4">
       {/* about me  */}
-      <div className="space-y-4 font-mono text-zinc-300">
+      <div className="space-y-4 py-2 md:py-0 font-mono text-zinc-300">
         <h2 className="text-2xl sm:text-3xl font-semibold text-white underline underline-offset-8">
           About Me
         </h2>
