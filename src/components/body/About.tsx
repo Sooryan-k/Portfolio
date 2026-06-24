@@ -4,6 +4,16 @@ import Link from "next/link";
 
 const projects = [
   {
+    title: "ZooperChat",
+    image: "/images/projects/zooperchat.svg",
+    type: "Individual Project",
+    description:
+      "A ChatGPT style AI chat application where conversations are saved to the cloud and stay in sync across every device a user signs in on. Replies appear live as the model generates them, sign in happens through a one time email link, chats can be grouped into projects, and any chat can be shared through a short read only link. All data is isolated per user with database row level security.",
+    technologies:
+      "Next.js, React, TypeScript, Tailwind CSS, Vercel AI SDK, Supabase (PostgreSQL, Auth, RLS), OpenRouter, Vercel",
+    link: "https://zooperchat.vercel.app/",
+  },
+  {
     title: "London News",
     image: "/images/projects/london-news-logo.webp",
     type: "Professional Project",
