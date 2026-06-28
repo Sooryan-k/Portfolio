@@ -8,7 +8,7 @@ const projects = [
     image: "/images/projects/zooperchat.svg",
     type: "Individual Project",
     description:
-      "A ChatGPT style AI chat application where conversations are saved to the cloud and stay in sync across every device a user signs in on. Replies appear live as the model generates them, sign in happens through a one time email link, and chats can be grouped into projects or shared through a short read only link. It also has a hands free voice mode and live collaborative rooms where multiple people join by link and chat with the AI together in real time, with presence, typing indicators, usernames, and a per message AI memory.",
+      "A ChatGPT style AI chat application where conversations are saved to the cloud and stay in sync across every device a user signs in on. Replies appear live as the model generates them, sign in happens with Google or a one time email link, and chats can be grouped into projects or shared through a short read only link. It also has a hands free voice mode and live collaborative rooms where multiple people join by link and chat with the AI together in real time, with presence, typing indicators, usernames, and a per message AI memory.",
     technologies:
       "Next.js, React, TypeScript, Tailwind CSS, Vercel AI SDK, Supabase (PostgreSQL, Auth, Realtime, RLS), Web Speech API, OpenRouter, Vercel",
     link: "https://zooperchat.vercel.app/",
