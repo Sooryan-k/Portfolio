@@ -1,85 +1,123 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import { FileText, Menu, X } from "lucide-react";
+import { navLinks, profile } from "@/data/portfolio";
 
-export default function StickyHeader() {
-  const [show, setShow] = useState(false);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string>(navLinks[0].id);
+  const [open, setOpen] = useState(false);
 
+  // glassy background once the user scrolls past the hero top
   useEffect(() => {
-    const handleScroll = () => {
-      setShow(window.scrollY > 500);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  // scroll-spy: highlight the section currently in view
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.getElementById(l.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div
-      className={`
-        fixed top-0 inset-x-0 z-50
-        transition-all duration-300
-        ${show ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}
-      `}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open
+          ? "border-b border-white/10 bg-base/70 backdrop-blur-xl"
+          : "border-b border-transparent"
+      }`}
     >
-      <header className="bg-black/70 backdrop-blur-md border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          {/* left: small profile + name */}
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full overflow-hidden">
-              <Image
-                src="/images/Profile-Photo.webp"
-                alt="profile"
-                width={40}
-                height={40}
-                className="h-full w-full object-cover"
-              />
-            </div>
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6">
+        {/* logo */}
+        <Link
+          href="#top"
+          className="font-display text-lg font-semibold tracking-tight text-white"
+          onClick={() => setOpen(false)}
+        >
+          Sooryan<span className="text-accent">.</span>
+        </Link>
 
-            <div className="leading-tight">
-              <p className="font-mono text-sm font-semibold text-white">
-                Sooryan K
-              </p>
-              <p className="font-mono text-xs text-zinc-400">
-                Full Stack Developer
-              </p>
-            </div>
-          </div>
-
-          {/* right: social icons */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/Sooryan-k"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="github"
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/10 bg-black/60 text-zinc-300 hover:bg-black/80 hover:text-white transition"
+        {/* desktop links */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={`#${link.id}`}
+              className={`rounded-lg px-3 py-1.5 font-mono text-xs tracking-wide transition-colors ${
+                active === link.id
+                  ? "text-accent"
+                  : "text-zinc-400 hover:text-white"
+              }`}
             >
-              <Github size={16} />
-            </a>
+              {link.label}
+            </Link>
+          ))}
+        </div>
 
-            <a
-              href="mailto:sooryanoff@gmail.com"
-              aria-label="mail"
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/10 bg-black/60 text-zinc-300 hover:bg-black/80 hover:text-white transition"
-            >
-              <Mail size={16} />
-            </a>
+        {/* right side */}
+        <div className="flex items-center gap-2">
+          <Link
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 font-mono text-xs font-medium text-accent transition hover:bg-accent/20"
+          >
+            <FileText size={14} />
+            Resume
+          </Link>
 
-            <a
-              href="https://www.linkedin.com/in/sooryan-k/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="linkedin"
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/10 bg-black/60 text-zinc-300 hover:bg-black/80 hover:text-white transition"
-            >
-              <Linkedin size={16} />
-            </a>
+          {/* mobile menu toggle */}
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300 transition hover:text-white md:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* mobile dropdown */}
+      {open && (
+        <div className="border-t border-white/10 bg-base/95 backdrop-blur-xl md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col px-5 py-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => setOpen(false)}
+                className={`rounded-lg px-2 py-3 font-mono text-sm transition-colors ${
+                  active === link.id
+                    ? "text-accent"
+                    : "text-zinc-300 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
-      </header>
-    </div>
+      )}
+    </header>
   );
 }

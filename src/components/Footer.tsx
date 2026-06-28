@@ -1,108 +1,80 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowUpRight, FileText, Github, Linkedin, Mail } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+import { lastUpdated, profile, socials } from "@/data/portfolio";
+
 export default function Footer() {
   return (
-    <footer className="mt-10 space-y-14 px-4 pb-12 text-center font-mono text-zinc-300">
-      {/* tech stack  */}
-      <div className="space-y-8">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white">
-          My Tech Stack
-        </h2>
+    <footer id="contact" className="mx-auto max-w-5xl px-5 py-20 sm:px-6 sm:py-28">
+      <Reveal>
+        <div className="rounded-3xl border border-white/10 bg-surface/40 px-6 py-14 text-center sm:px-12">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
+            Get in touch
+          </p>
+          <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-semibold leading-tight text-white sm:text-5xl">
+            Let&apos;s build something great together.
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl font-sans text-sm text-zinc-400 sm:text-base">
+            I&apos;m currently open to new opportunities. Whether you have a role
+            in mind or just want to connect, my inbox is always open.
+          </p>
 
-        <div className="mx-auto max-w-5xl space-y-8">
-          {/* frontend & backend */}
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-widest text-zinc-400">
-              Frontend & Backend
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "Next.js",
-                "React.js",
-                "Node.js",
-                "Express.js",
-                "TypeScript",
-                "JavaScript",
-                "HTML",
-                "CSS",
-                "Tailwind CSS",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-200 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={socials.email}
+              className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-mono text-sm font-medium text-black transition hover:bg-accent-soft"
+            >
+              <Mail size={16} />
+              {profile.email}
+            </a>
+            <Link
+              href={profile.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-mono text-sm text-white transition hover:bg-white/10"
+            >
+              <FileText size={16} />
+              Resume
+              <ArrowUpRight size={14} />
+            </Link>
           </div>
 
-          {/* databases & ORM */}
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-widest text-zinc-400">
-              Databases & ORM
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["PostgreSQL", "MongoDB", "Prisma ORM", "Supabase"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-200 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
-                  >
-                    {skill}
-                  </span>
-                )
-              )}
-            </div>
-          </div>
-
-          {/* tools & platforms */}
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-widest text-zinc-400">
-              Tools & Platforms
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["VS Code", "Git", "Cursor", "Vercel", "Sentry", "SEO"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-200 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
-                  >
-                    {skill}
-                  </span>
-                )
-              )}
-            </div>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <SocialIcon href={socials.github} label="GitHub">
+              <Github size={18} />
+            </SocialIcon>
+            <SocialIcon href={socials.linkedin} label="LinkedIn">
+              <Linkedin size={18} />
+            </SocialIcon>
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      {/* resume */}
-      <div className="flex justify-center">
-        <Link
-          href="/Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-      inline-flex items-center gap-3
-      rounded-xl
-      border border-white/20
-      bg-white/10
-      px-5 py-2
-      font-mono text-lg font-semibold tracking-wider text-white
-      backdrop-blur-md
-      hover:bg-white/15
-    "
-        >
-          Resume
-          <ArrowUpRight size={20} />
-        </Link>
-      </div>
-
-      {/* footer text */}
-      <p className="text-xs sm:text-sm text-zinc-500">
-        Built by Sooryan K · Last updated: Jan, 2026
+      <p className="mt-10 text-center font-mono text-xs text-zinc-600">
+        Built by {profile.name} · Last updated {lastUpdated}
       </p>
     </footer>
+  );
+}
+
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-300 transition hover:border-accent/40 hover:text-accent"
+    >
+      {children}
+    </a>
   );
 }
