@@ -12,7 +12,7 @@ export default function Skills() {
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((group, i) => (
           <Reveal key={group.label} delay={i * 0.05} className="h-full">
-            <div className="h-full rounded-2xl border border-white/10 bg-surface/40 p-6">
+            <div className="h-full rounded-2xl border border-border bg-surface/40 p-6">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {group.label}
               </p>
@@ -20,7 +20,7 @@ export default function Skills() {
                 {group.items.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-zinc-300 transition hover:border-accent/30 hover:text-white"
+                    className="rounded-full border border-border bg-fill px-3 py-1 font-mono text-xs text-muted transition hover:border-accent/30 hover:text-fg"
                   >
                     {skill}
                   </span>

@@ -59,12 +59,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeInit = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.classList.add(t);}catch(e){document.documentElement.classList.add('dark');}})();`;
+
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="relative min-h-screen bg-base text-white antialiased">
+      <body className="relative min-h-screen bg-base text-fg antialiased">
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <div className="bg-ambiance -z-10" aria-hidden />
         <Navbar />
         {children}

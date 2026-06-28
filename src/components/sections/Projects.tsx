@@ -19,17 +19,17 @@ export default function Projects() {
       <div className="mt-12 space-y-6">
         {projects.map((project, i) => (
           <Reveal key={project.title} delay={i * 0.05}>
-            <article className="group relative grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-surface/40 p-6 transition-colors hover:border-accent/30 md:grid-cols-[180px_1fr] md:gap-8 md:p-7">
+            <article className="group relative grid grid-cols-1 gap-6 rounded-2xl border border-border bg-surface/40 p-6 transition-colors hover:border-accent/30 md:grid-cols-[180px_1fr] md:gap-8 md:p-7">
               {/* big faded index */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute right-6 top-4 font-display text-5xl font-semibold text-white/5 md:text-6xl"
+                className="pointer-events-none absolute right-6 top-4 font-display text-5xl font-semibold text-fg/5 md:text-6xl"
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               {/* logo */}
-              <div className="relative flex aspect-square w-24 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/40 sm:w-28 md:w-full">
+              <div className="relative flex aspect-square w-24 items-center justify-center overflow-hidden rounded-xl border border-border bg-fill sm:w-28 md:w-full">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -42,7 +42,7 @@ export default function Projects() {
               {/* content */}
               <div className="relative">
                 <div className="flex flex-wrap items-center gap-3">
-                  <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">
+                  <h3 className="font-display text-xl font-semibold text-fg sm:text-2xl">
                     {project.title}
                   </h3>
                   <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
@@ -50,7 +50,7 @@ export default function Projects() {
                   </span>
                 </div>
 
-                <p className="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-zinc-400">
+                <p className="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-muted">
                   {project.description}
                 </p>
 
@@ -58,7 +58,7 @@ export default function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[11px] text-zinc-400"
+                      className="rounded-md border border-border bg-fill px-2 py-1 font-mono text-[11px] text-muted"
                     >
                       {tech}
                     </span>

@@ -17,7 +17,7 @@ export default function SectionHeading({
         {index ? `${index} — ` : ""}
         {eyebrow}
       </p>
-      <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
+      <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-fg sm:text-4xl">
         {title}
       </h2>
     </div>

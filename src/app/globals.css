@@ -1,18 +1,57 @@
 @import "tailwindcss";
 
-@theme {
-  /* surfaces */
-  --color-base: #0a0a0b;
-  --color-surface: #141416;
+/* Semantic tokens reference runtime CSS variables so they flip with the theme.
+   `inline` makes utilities compile to var(--c-*) directly. */
+@theme inline {
+  --color-base: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-fg: var(--c-fg);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+  --color-border: var(--c-border);
+  --color-fill: var(--c-fill);
+  --color-fill-strong: var(--c-fill-strong);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-on-accent: var(--c-on-accent);
 
-  /* warm gold accent (modern + classic) */
-  --color-accent: #d8a13a;
-  --color-accent-soft: #e9c878;
-
-  /* typography */
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+}
+
+/* Dark theme (default) */
+:root {
+  --c-base: #0a0a0b;
+  --c-surface: #141416;
+  --c-fg: #ffffff;
+  --c-muted: #b4b4bb;
+  --c-faint: #71717a;
+  --c-border: rgba(255, 255, 255, 0.1);
+  --c-fill: rgba(255, 255, 255, 0.05);
+  --c-fill-strong: rgba(255, 255, 255, 0.1);
+  --c-accent: #d8a13a;
+  --c-accent-soft: #e9c878;
+  --c-on-accent: #0a0a0b;
+
+  color-scheme: dark;
+}
+
+/* Light theme */
+html.light {
+  --c-base: #f7f6f3;
+  --c-surface: #ffffff;
+  --c-fg: #18181b;
+  --c-muted: #52525b;
+  --c-faint: #71717a;
+  --c-border: rgba(0, 0, 0, 0.1);
+  --c-fill: rgba(0, 0, 0, 0.045);
+  --c-fill-strong: rgba(0, 0, 0, 0.08);
+  --c-accent: #a16207;
+  --c-accent-soft: #ca8a04;
+  --c-on-accent: #ffffff;
+
+  color-scheme: light;
 }
 
 html {
@@ -21,7 +60,9 @@ html {
 
 body {
   background-color: var(--color-base);
+  color: var(--color-fg);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* offset anchored sections so the fixed navbar doesn't cover headings */
@@ -30,14 +71,14 @@ footer[id] {
   scroll-margin-top: 5.5rem;
 }
 
-/* ambient backdrop: soft gold glow at the top + a faint masked grid */
+/* ambient backdrop: soft accent glow at the top + a faint masked grid */
 .bg-ambiance {
   position: fixed;
   inset: 0;
   background:
     radial-gradient(
       55% 40% at 50% -5%,
-      rgba(216, 161, 58, 0.12),
+      color-mix(in oklab, var(--color-accent) 14%, transparent),
       transparent 70%
     ),
     var(--color-base);
@@ -48,8 +89,16 @@ footer[id] {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(
     ellipse 75% 55% at 50% 0%,

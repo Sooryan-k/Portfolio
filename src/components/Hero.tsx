@@ -46,21 +46,21 @@ export default function Hero() {
 
         <motion.h1
           variants={item}
-          className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
+          className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-fg sm:text-6xl lg:text-7xl"
         >
           {profile.name}
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="mt-3 font-display text-2xl italic text-zinc-300 sm:text-3xl"
+          className="mt-3 font-display text-2xl italic text-muted sm:text-3xl"
         >
           {profile.role}
         </motion.p>
 
         <motion.p
           variants={item}
-          className="mx-auto mt-6 max-w-xl font-sans text-sm leading-relaxed text-zinc-400 sm:text-base md:mx-0"
+          className="mx-auto mt-6 max-w-xl font-sans text-sm leading-relaxed text-muted sm:text-base md:mx-0"
         >
           {profile.intro}
         </motion.p>
@@ -68,7 +68,7 @@ export default function Hero() {
         {profile.available && (
           <motion.div
             variants={item}
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-zinc-300"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-fill px-3 py-1 font-mono text-xs text-muted"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -84,7 +84,7 @@ export default function Hero() {
         >
           <Link
             href="#work"
-            className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 font-mono text-sm font-medium text-black transition hover:bg-accent-soft"
+            className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 font-mono text-sm font-medium text-on-accent transition hover:bg-accent-soft"
           >
             View Work
             <ArrowDown
@@ -96,7 +96,7 @@ export default function Hero() {
             href={profile.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-sm text-white transition hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-fill px-5 py-2.5 font-mono text-sm text-fg transition hover:bg-fill-strong"
           >
             <FileText size={16} />
             Resume
@@ -130,7 +130,7 @@ export default function Hero() {
           className="absolute -inset-4 rounded-full bg-accent/20 blur-2xl"
           aria-hidden
         />
-        <div className="relative h-44 w-44 overflow-hidden rounded-full border border-accent/30 ring-1 ring-white/10 sm:h-56 sm:w-56 lg:h-72 lg:w-72">
+        <div className="relative h-44 w-44 overflow-hidden rounded-full border border-accent/30 ring-1 ring-border sm:h-56 sm:w-56 lg:h-72 lg:w-72">
           <Image
             src={profile.avatar}
             alt={profile.name}
@@ -161,7 +161,7 @@ function SocialIcon({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-300 transition hover:border-accent/40 hover:text-accent"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-fill text-muted transition hover:border-accent/40 hover:text-accent"
     >
       {children}
     </a>

@@ -10,7 +10,7 @@ export default function About() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <p className="mt-8 max-w-3xl font-sans text-base leading-relaxed text-zinc-300 sm:text-lg">
+        <p className="mt-8 max-w-3xl font-sans text-base leading-relaxed text-muted sm:text-lg">
           {profile.bio}
         </p>
       </Reveal>
@@ -20,7 +20,7 @@ export default function About() {
           {focusAreas.map((area) => (
             <span
               key={area}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-mono text-xs text-zinc-300"
+              className="rounded-full border border-border bg-fill px-4 py-1.5 font-mono text-xs text-muted"
             >
               {area}
             </span>

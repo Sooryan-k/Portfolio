@@ -32,21 +32,21 @@ export default function Experience() {
 
       <Reveal delay={0.1}>
         <div className="mt-14">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-faint">
             Certifications
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {certifications.map((cert) => (
               <div
                 key={cert.title}
-                className="rounded-xl border border-white/10 bg-surface/40 p-5"
+                className="rounded-xl border border-border bg-surface/40 p-5"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="font-display text-base font-semibold text-white">
+                    <p className="font-display text-base font-semibold text-fg">
                       {cert.title}
                     </p>
-                    <p className="mt-1 font-sans text-sm text-zinc-400">
+                    <p className="mt-1 font-sans text-sm text-muted">
                       {cert.org}
                     </p>
                   </div>
@@ -72,17 +72,17 @@ function TimelineColumn({
 }) {
   return (
     <div>
-      <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+      <p className="font-mono text-xs uppercase tracking-[0.25em] text-faint">
         {title}
       </p>
-      <ol className="relative mt-6 space-y-8 border-l border-white/10">
+      <ol className="relative mt-6 space-y-8 border-l border-border">
         {items.map((item) => (
           <li key={item.org} className="ml-6">
             <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-base" />
-            <p className="font-display text-lg font-semibold text-white">
+            <p className="font-display text-lg font-semibold text-fg">
               {item.role}
             </p>
-            <p className="mt-0.5 font-sans text-sm text-zinc-400">{item.org}</p>
+            <p className="mt-0.5 font-sans text-sm text-muted">{item.org}</p>
             <p className="mt-1 font-mono text-xs text-accent">{item.period}</p>
           </li>
         ))}

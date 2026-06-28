@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FileText, Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-white/10 bg-base/70 backdrop-blur-xl"
+          ? "border-b border-border bg-base/70 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
@@ -49,7 +50,7 @@ export default function Navbar() {
         {/* logo */}
         <Link
           href="#top"
-          className="font-display text-lg font-semibold tracking-tight text-white"
+          className="font-display text-lg font-semibold tracking-tight text-fg"
           onClick={() => setOpen(false)}
         >
           Sooryan<span className="text-accent">.</span>
@@ -64,7 +65,7 @@ export default function Navbar() {
               className={`rounded-lg px-3 py-1.5 font-mono text-xs tracking-wide transition-colors ${
                 active === link.id
                   ? "text-accent"
-                  : "text-zinc-400 hover:text-white"
+                  : "text-muted hover:text-fg"
               }`}
             >
               {link.label}
@@ -74,6 +75,8 @@ export default function Navbar() {
 
         {/* right side */}
         <div className="flex items-center gap-2">
+          <ThemeToggle />
+
           <Link
             href={profile.resume}
             target="_blank"
@@ -90,7 +93,7 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300 transition hover:text-white md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-fill text-muted transition hover:text-fg md:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -99,7 +102,7 @@ export default function Navbar() {
 
       {/* mobile dropdown */}
       {open && (
-        <div className="border-t border-white/10 bg-base/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-border bg-base/95 backdrop-blur-xl md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col px-5 py-3">
             {navLinks.map((link) => (
               <Link
@@ -109,7 +112,7 @@ export default function Navbar() {
                 className={`rounded-lg px-2 py-3 font-mono text-sm transition-colors ${
                   active === link.id
                     ? "text-accent"
-                    : "text-zinc-300 hover:text-white"
+                    : "text-muted hover:text-fg"
                 }`}
               >
                 {link.label}
