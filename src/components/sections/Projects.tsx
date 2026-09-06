@@ -29,13 +29,13 @@ export default function Projects() {
               </span>
 
               {/* logo */}
-              <div className="relative flex aspect-square w-24 items-center justify-center overflow-hidden rounded-xl border border-border bg-fill p-2.5 sm:w-28 sm:p-3 md:w-full md:p-4">
+              <div className="relative flex aspect-square w-24 items-center justify-center overflow-hidden rounded-xl border border-border bg-fill sm:w-28 md:w-full">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={180}
                   height={180}
-                  className="h-full w-full rounded-lg object-contain"
+                  className="h-full w-full object-cover"
                 />
               </div>
 

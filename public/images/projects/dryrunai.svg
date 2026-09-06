@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="96" fill="#4f46e5"/>
+  <rect width="512" height="512" fill="#4f46e5"/>
+
+  <g transform="translate(256 256) scale(1.12) translate(-256 -256)">
 
   <!-- target mark -->
   <g transform="translate(112.64 24.64) scale(0.56)">
@@ -18,4 +20,5 @@
   <text x="256" y="440" dx="2" text-anchor="middle"
         font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700"
         letter-spacing="4" fill="#4f46e5">AI</text>
+  </g>
 </svg>
