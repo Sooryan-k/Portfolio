@@ -58,6 +58,7 @@ export const projects: Project[] = [
       "Piston",
       "Vercel",
     ],
+    link: "https://dryrunai.vercel.app/",
   },
   {
     title: "ZooperChat",
