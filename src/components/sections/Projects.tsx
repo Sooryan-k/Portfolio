@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -66,7 +65,7 @@ export default function Projects() {
                 </div>
 
                 {project.link && (
-                  <Link
+                  <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -74,7 +73,7 @@ export default function Projects() {
                   >
                     Visit site
                     <ArrowUpRight size={16} />
-                  </Link>
+                  </a>
                 )}
               </div>
             </article>

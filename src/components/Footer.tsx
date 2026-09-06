@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, FileText, Github, Linkedin, Mail } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { lastUpdated, profile, socials } from "@/data/portfolio";
@@ -27,7 +26,7 @@ export default function Footer() {
               <Mail size={16} />
               {profile.email}
             </a>
-            <Link
+            <a
               href={profile.resume}
               target="_blank"
               rel="noopener noreferrer"
@@ -36,7 +35,7 @@ export default function Footer() {
               <FileText size={16} />
               Resume
               <ArrowUpRight size={14} />
-            </Link>
+            </a>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3">

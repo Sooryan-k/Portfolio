@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { FileText, Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -42,24 +41,24 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-border bg-base/70 backdrop-blur-xl"
+          ? "border-b border-border bg-page/70 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6">
         {/* logo */}
-        <Link
+        <a
           href="#top"
           className="font-display text-lg font-semibold tracking-tight text-fg"
           onClick={() => setOpen(false)}
         >
           Sooryan<span className="text-accent">.</span>
-        </Link>
+        </a>
 
         {/* desktop links */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.id}
               href={`#${link.id}`}
               className={`rounded-lg px-3 py-1.5 font-mono text-xs tracking-wide transition-colors ${
@@ -69,7 +68,7 @@ export default function Navbar() {
               }`}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </div>
 
@@ -77,7 +76,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
-          <Link
+          <a
             href={profile.resume}
             target="_blank"
             rel="noopener noreferrer"
@@ -85,7 +84,7 @@ export default function Navbar() {
           >
             <FileText size={14} />
             Resume
-          </Link>
+          </a>
 
           {/* mobile menu toggle */}
           <button
@@ -102,10 +101,10 @@ export default function Navbar() {
 
       {/* mobile dropdown */}
       {open && (
-        <div className="border-t border-border bg-base/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-border bg-page/95 backdrop-blur-xl md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col px-5 py-3">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={() => setOpen(false)}
@@ -116,7 +115,7 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

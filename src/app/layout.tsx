@@ -3,22 +3,28 @@ import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/StickyHeader";
 
+// None of the three faces are preloaded. They total ~126KB, and preloading
+// them puts that on the critical path on a slow connection just to render
+// text that `display: swap` already paints in a metrics-matched fallback.
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
+  preload: false,
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -67,8 +73,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="relative min-h-screen bg-base text-fg antialiased">
+      <body className="relative min-h-screen bg-page text-fg antialiased">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <noscript>
+          <style>{".reveal{opacity:1}"}</style>
+        </noscript>
         <div className="bg-ambiance -z-10" aria-hidden />
         <Navbar />
         {children}

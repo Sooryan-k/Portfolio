@@ -3,7 +3,7 @@
 /* Semantic tokens reference runtime CSS variables so they flip with the theme.
    `inline` makes utilities compile to var(--c-*) directly. */
 @theme inline {
-  --color-base: var(--c-base);
+  --color-page: var(--c-base);
   --color-surface: var(--c-surface);
   --color-fg: var(--c-fg);
   --color-muted: var(--c-muted);
@@ -26,7 +26,7 @@
   --c-surface: #141416;
   --c-fg: #ffffff;
   --c-muted: #b4b4bb;
-  --c-faint: #71717a;
+  --c-faint: #82828b;
   --c-border: rgba(255, 255, 255, 0.1);
   --c-fill: rgba(255, 255, 255, 0.05);
   --c-fill-strong: rgba(255, 255, 255, 0.1);
@@ -43,7 +43,7 @@ html.light {
   --c-surface: #ffffff;
   --c-fg: #18181b;
   --c-muted: #52525b;
-  --c-faint: #71717a;
+  --c-faint: #63636b;
   --c-border: rgba(0, 0, 0, 0.1);
   --c-fill: rgba(0, 0, 0, 0.045);
   --c-fill-strong: rgba(0, 0, 0, 0.08);
@@ -59,7 +59,7 @@ html {
 }
 
 body {
-  background-color: var(--color-base);
+  background-color: var(--color-page);
   color: var(--color-fg);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -81,7 +81,7 @@ footer[id] {
       color-mix(in oklab, var(--color-accent) 14%, transparent),
       transparent 70%
     ),
-    var(--color-base);
+    var(--color-page);
 }
 
 .bg-ambiance::before {
@@ -112,8 +112,57 @@ footer[id] {
   );
 }
 
+/* Entrance animations. Pure CSS so nothing waits on a JS bundle to paint:
+   `.anim-*` play on load, `.reveal` waits for the observer in layout.tsx. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Transform only — an element at opacity:0 is not an LCP candidate, and the
+   portrait is the largest thing above the fold. */
+@keyframes pop-in {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.anim-up {
+  animation: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
+}
+
+.anim-pop {
+  animation: pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .anim-up,
+  .anim-pop,
+  .reveal,
+  .reveal.is-visible {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

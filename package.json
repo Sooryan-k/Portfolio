@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
-    "motion": "^12.42.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -24,5 +23,12 @@
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "chrome 111",
+    "edge 111",
+    "firefox 111",
+    "safari 16.4",
+    "not dead"
+  ]
 }
