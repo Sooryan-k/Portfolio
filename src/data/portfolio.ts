@@ -38,6 +38,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "dryrun AI",
+    image: "/images/projects/dryrunai.svg",
+    type: "Individual Project",
+    description:
+      "An AI interview preparation platform that generates a complete study path for any stack, then puts you in front of a voice interviewer that asks real follow ups and privately scores every answer. It can interview you on a public GitHub repo you wrote, or drill one topic deeper each turn until it names your knowledge ceiling, alongside whiteboard rounds graded from your diagram, coding rounds run against real tests, salary negotiation, and panels of three interviewers with their own voices, each ending in a report card with model answers and delivery coaching.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Gemini",
+      "Supabase (PostgreSQL, Auth, RLS)",
+      "Web Speech API",
+      "Monaco Editor",
+      "Excalidraw",
+      "Recharts",
+      "GitHub API",
+      "Piston",
+      "Vercel",
+    ],
+  },
+  {
     title: "ZooperChat",
     image: "/images/projects/zooperchat.svg",
     type: "Individual Project",
